@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* MindNest Calm Color Palette */
+    --background: 45 30% 98%;
+    --foreground: 240 10% 25%;
+
+    --card: 45 25% 97%;
+    --card-foreground: 240 10% 25%;
+
+    --popover: 45 25% 97%;
+    --popover-foreground: 240 10% 25%;
+
+    /* Soft Lavender Primary */
+    --primary: 260 45% 75%;
+    --primary-foreground: 260 45% 20%;
+
+    /* Sage Green Secondary */
+    --secondary: 145 30% 85%;
+    --secondary-foreground: 145 40% 25%;
+
+    /* Warm Cream Muted */
+    --muted: 35 35% 92%;
+    --muted-foreground: 240 10% 45%;
+
+    /* Peachy Accent */
+    --accent: 25 80% 88%;
+    --accent-foreground: 25 60% 30%;
+
+    /* Soft Rose for gentle warnings */
+    --destructive: 350 50% 85%;
+    --destructive-foreground: 350 50% 30%;
+
+    /* Borders and inputs */
+    --border: 260 20% 90%;
+    --input: 260 20% 92%;
+    --ring: 260 45% 75%;
+
+    --radius: 1rem;
+
+    /* Custom MindNest tokens */
+    --lavender: 260 50% 78%;
+    --lavender-light: 260 45% 92%;
+    --sage: 145 35% 75%;
+    --sage-light: 145 30% 90%;
+    --cream: 40 40% 96%;
+    --peach: 25 75% 85%;
+    --peach-light: 25 60% 92%;
+    --sky: 200 60% 85%;
+    --sky-light: 200 50% 94%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(260 45% 95%) 0%, hsl(200 50% 94%) 50%, hsl(145 30% 92%) 100%);
+    --gradient-lavender: linear-gradient(135deg, hsl(260 50% 90%) 0%, hsl(280 40% 88%) 100%);
+    --gradient-sage: linear-gradient(135deg, hsl(145 35% 88%) 0%, hsl(165 30% 85%) 100%);
+    --gradient-peach: linear-gradient(135deg, hsl(25 70% 90%) 0%, hsl(15 65% 88%) 100%);
+    --gradient-calm: linear-gradient(180deg, hsl(260 45% 96%) 0%, hsl(40 40% 97%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(260 30% 70% / 0.15);
+    --shadow-glow: 0 0 30px hsl(260 50% 80% / 0.3);
+    --shadow-hover: 0 8px 30px -8px hsl(260 40% 65% / 0.25);
+    --shadow-card: 0 2px 12px -2px hsl(260 30% 70% / 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 45 30% 98%;
+    --sidebar-foreground: 240 10% 25%;
+    --sidebar-primary: 260 45% 75%;
+    --sidebar-primary-foreground: 260 45% 20%;
+    --sidebar-accent: 145 30% 85%;
+    --sidebar-accent-foreground: 145 40% 25%;
+    --sidebar-border: 260 20% 90%;
+    --sidebar-ring: 260 45% 75%;
+  }
+
+  .dark {
+    --background: 240 15% 12%;
+    --foreground: 45 20% 92%;
+
+    --card: 240 15% 15%;
+    --card-foreground: 45 20% 92%;
+
+    --popover: 240 15% 15%;
+    --popover-foreground: 45 20% 92%;
+
+    --primary: 260 40% 65%;
+    --primary-foreground: 260 20% 95%;
+
+    --secondary: 145 25% 35%;
+    --secondary-foreground: 145 30% 90%;
+
+    --muted: 240 15% 20%;
+    --muted-foreground: 45 15% 65%;
+
+    --accent: 25 50% 45%;
+    --accent-foreground: 25 40% 95%;
+
+    --destructive: 350 40% 35%;
+    --destructive-foreground: 350 30% 92%;
+
+    --border: 240 15% 25%;
+    --input: 240 15% 22%;
+    --ring: 260 40% 65%;
+
+    --lavender: 260 40% 50%;
+    --lavender-light: 260 35% 25%;
+    --sage: 145 30% 45%;
+    --sage-light: 145 25% 22%;
+    --cream: 40 20% 18%;
+    --peach: 25 50% 45%;
+    --peach-light: 25 40% 22%;
+    --sky: 200 40% 45%;
+    --sky-light: 200 35% 22%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(240 15% 14%) 0%, hsl(260 20% 16%) 50%, hsl(240 15% 14%) 100%);
+    --gradient-calm: linear-gradient(180deg, hsl(240 15% 14%) 0%, hsl(240 15% 12%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+@layer components {
+  /* Floating particles animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: 0.4;
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px) rotate(90deg);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-40px) translateX(-10px) rotate(180deg);
+      opacity: 0.4;
+    }
+    75% {
+      transform: translateY(-20px) translateX(15px) rotate(270deg);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-30px) scale(1.05);
+    }
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scale(1.02);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px 10px hsl(var(--primary) / 0.1);
+    }
+  }
+
+  @keyframes wave {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-5px) rotate(1deg);
+    }
+    75% {
+      transform: translateY(5px) rotate(-1deg);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  .animate-wave {
+    animation: wave 4s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  /* Delay utilities for staggered animations */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  /* Gradient backgrounds */
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-lavender {
+    background: var(--gradient-lavender);
+  }
+
+  .bg-gradient-sage {
+    background: var(--gradient-sage);
+  }
+
+  .bg-gradient-peach {
+    background: var(--gradient-peach);
+  }
+
+  .bg-gradient-calm {
+    background: var(--gradient-calm);
+  }
+
+  /* Soft shadows */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Gentle button glow */
+  .btn-glow {
+    @apply transition-all duration-300;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.4);
+  }
+
+  /* Safe space input styling */
+  .safe-input {
+    @apply transition-all duration-300 focus:ring-2 focus:ring-primary/30;
+  }
+
+  /* Gentle scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+
+  /* Particle styling */
+  .particle {
+    @apply absolute rounded-full pointer-events-none;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%);
+  }
+
+  /* Memory card flip */
+  .memory-card {
+    perspective: 1000px;
+  }
+
+  .memory-card-inner {
+    @apply relative w-full h-full transition-transform duration-700;
+    transform-style: preserve-3d;
+  }
+
+  .memory-card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .memory-card-front,
+  .memory-card-back {
+    @apply absolute inset-0 rounded-2xl flex items-center justify-center;
+    backface-visibility: hidden;
+  }
+
+  .memory-card-back {
+    transform: rotateY(180deg);
+  }
+}

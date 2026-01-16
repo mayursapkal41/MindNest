@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sacred Meditation Design System
+   Inspired by ancient Himalayan temples, soft candlelight, and earthen textures
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Sacred earth tones */
+    --background: 35 30% 95%;
+    --foreground: 25 30% 18%;
+
+    /* Parchment card */
+    --card: 38 35% 92%;
+    --card-foreground: 25 30% 18%;
+
+    --popover: 38 35% 92%;
+    --popover-foreground: 25 30% 18%;
+
+    /* Burnished gold */
+    --primary: 35 45% 55%;
+    --primary-foreground: 35 30% 95%;
+
+    /* Warm sand */
+    --secondary: 35 25% 88%;
+    --secondary-foreground: 25 30% 25%;
+
+    /* Soft earth */
+    --muted: 30 20% 85%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Saffron accent */
+    --accent: 32 55% 60%;
+    --accent-foreground: 25 30% 15%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 35 30% 95%;
+
+    --border: 30 20% 80%;
+    --input: 30 20% 80%;
+    --ring: 35 45% 55%;
+
+    --radius: 1rem;
+
+    /* Sacred custom colors */
+    --bronze: 32 50% 40%;
+    --bronze-light: 35 55% 65%;
+    --bronze-glow: 40 60% 75%;
+    --saffron: 38 70% 65%;
+    --temple-brown: 25 35% 25%;
+    --parchment: 40 40% 93%;
+    --parchment-dark: 35 30% 85%;
+    --cream: 40 35% 97%;
+    --gold-shimmer: 42 65% 70%;
+
+    /* Gradients */
+    --gradient-sacred: linear-gradient(180deg, hsl(35 30% 95%) 0%, hsl(38 35% 90%) 100%);
+    --gradient-bowl: linear-gradient(145deg, hsl(35 55% 65%) 0%, hsl(32 50% 40%) 50%, hsl(28 45% 30%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(40 60% 75% / 0.6) 0%, transparent 70%);
+    --gradient-vignette: radial-gradient(ellipse at center, transparent 0%, hsl(25 30% 18% / 0.4) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 30px hsl(25 30% 18% / 0.08);
+    --shadow-elevated: 0 8px 40px hsl(25 30% 18% / 0.12);
+    --shadow-glow: 0 0 60px hsl(40 60% 75% / 0.4);
+    --shadow-bowl: 0 20px 60px hsl(25 30% 18% / 0.2), inset 0 2px 20px hsl(40 60% 75% / 0.3);
+
+    --sidebar-background: 35 30% 95%;
+    --sidebar-foreground: 25 30% 18%;
+    --sidebar-primary: 35 45% 55%;
+    --sidebar-primary-foreground: 35 30% 95%;
+    --sidebar-accent: 32 55% 60%;
+    --sidebar-accent-foreground: 25 30% 15%;
+    --sidebar-border: 30 20% 80%;
+    --sidebar-ring: 35 45% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lora', Georgia, serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .sacred-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .parchment-card {
+    background: linear-gradient(135deg, hsl(var(--parchment)) 0%, hsl(var(--parchment-dark)) 100%);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .bowl-glow {
+    box-shadow: var(--shadow-bowl);
+  }
+
+  .sacred-text {
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  /* Sacred animations */
+  @keyframes fade-in-slow {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes breathing {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 40px hsl(40 60% 75% / 0.3);
+    }
+    50% {
+      transform: scale(1.02);
+      box-shadow: 0 0 60px hsl(40 60% 75% / 0.5);
+    }
+  }
+
+  @keyframes gentle-pulse {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.4;
+    }
+    100% {
+      transform: scale(1.15);
+      opacity: 0;
+    }
+  }
+
+  @keyframes scroll-hint {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in-slow {
+    animation: fade-in-slow 1.5s ease-out forwards;
+  }
+
+  .animate-fade-in-slower {
+    animation: fade-in-slow 2s ease-out forwards;
+  }
+
+  .animate-breathing {
+    animation: breathing 6s ease-in-out infinite;
+  }
+
+  .animate-gentle-pulse {
+    animation: gentle-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-ripple {
+    animation: ripple 2s ease-out forwards;
+  }
+
+  .animate-scroll-hint {
+    animation: scroll-hint 2.5s ease-in-out infinite;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .delay-1000 {
+    animation-delay: 1000ms;
+  }
+
+  .delay-1500 {
+    animation-delay: 1500ms;
+  }
+
+  .vignette-overlay {
+    background: var(--gradient-vignette);
+  }
+}
